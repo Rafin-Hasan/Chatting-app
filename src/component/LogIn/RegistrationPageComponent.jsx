@@ -172,7 +172,7 @@ const RegistrationPageComponent = () => {
 
         {/* Right Column with Registration Form */}
         <div className="flex flex-col justify-center p-10">
-          <h1 className="text-4xl font-extrabold text-purple-600 mb-8">
+          <h1 className="text-4xl font-extrabold text-center text-purple-600 mb-8">
             Register
           </h1>
           <form className="space-y-6" onSubmit={handleSubmit}>

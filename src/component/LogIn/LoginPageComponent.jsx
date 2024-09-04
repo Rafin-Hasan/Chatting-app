@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react"; // Lottie for animation
-import LoginAnimation from "./../../../public/animetion/Animation.json"; // JSON animation file
+import LoginAnimation from "../../../public/animetion/Animation.json"; // JSON animation file
 import "./Home.css";
 import { Bounce, toast } from "react-toastify"; // For toast notifications
 import "react-toastify/dist/ReactToastify.css"; // Toastify CSS
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Firebase Auth methods
 import { Link } from "react-router-dom"; // For navigation between pages
 import { motion } from "framer-motion"; // Framer motion for animations
+import { getDatabase } from "firebase/database";
+import { useDispatch, useSelector } from "react-redux";
 
-const LoginPage = () => {
+const LoginPageComponent = () => {
   // useState for email and its error handling
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-  const auth = getAuth(); // Initialize Firebase Auth
 
   // useState for password and its error handling
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+
+  // Initialize Firebase Auth
+  const auth = getAuth();
+  const db = getDatabase();
 
   // Toggle password visibility
   const togglePasswordVisibility = () => {
@@ -40,6 +45,10 @@ const LoginPage = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
+
+    // Redux state
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.counter.userData);
 
     // Validate form inputs
     if (!email) {
@@ -219,4 +228,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginPageComponent;
