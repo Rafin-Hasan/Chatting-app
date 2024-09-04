@@ -8,7 +8,6 @@ import "./App.css";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Registion from "./pages/Registion";
-import ChatingPage from "./component/ChatingPage";
 import database from "./firebase.config";
 import { ToastContainer } from "react-toastify";
 import ForgetPassword from "./pages/ForgetPassword";
@@ -20,7 +19,6 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/registion" element={<Registion />} />
         <Route path="/forgetPassword" element={<ForgetPassword />} />
-        <Route path="/chating" element={<ChatingPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )

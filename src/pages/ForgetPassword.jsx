@@ -1,12 +1,12 @@
-import React from 'react'
-import Forget from '../component/Forget'
+import React from "react";
+import Forget from "../component/LogIn/Forget";
 
 const ForgetPassword = () => {
   return (
     <div>
-      <Forget/>
+      <Forget />
     </div>
-  )
-}
+  );
+};
 
-export default ForgetPassword
+export default ForgetPassword;
