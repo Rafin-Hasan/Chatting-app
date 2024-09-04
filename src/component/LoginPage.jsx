@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
-import LoginAnimetion from "../../public/animetion/Animation.json";
+import LoginAnimation from "../../public/animetion/Animation.json";
 import "./Home.css";
 import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,12 +11,14 @@ import { Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-// Animation
-const Annimation = () => {
+// Animation component
+const Animation = () => {
   useEffect(() => {
     Aos.init();
     Aos.refresh();
   }, []);
+
+  return null; // This component doesn't need to render anything
 };
 
 const LoginPage = () => {
@@ -24,7 +26,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
-  // auth form firebase
+  // auth from firebase
   const auth = getAuth();
 
   const [password, setPassword] = useState("");
@@ -68,7 +70,7 @@ const LoginPage = () => {
           console.log(user);
           // ...
 
-          if (user.emailVerified == false) {
+          if (user.emailVerified === false) {
             toast.error("Your email is not verified", {
               position: "top-right",
               autoClose: 5000,
@@ -99,7 +101,7 @@ const LoginPage = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode);
-          if (errorCode == "auth/invalid-credential") {
+          if (errorCode === "auth/invalid-credential") {
             toast.error("Password is incorrect", {
               position: "top-right",
               autoClose: 5000,
@@ -116,11 +118,14 @@ const LoginPage = () => {
     }
   };
 
+  // Call the Animation component to initialize AOS
+  Animation();
+
   return (
     <>
       <div className=" flex ">
         <div className=" w-[500px] gap-40 h-full ">
-          <Lottie animationData={LoginAnimetion} />
+          <Lottie animationData={LoginAnimation} />
         </div>
         <div className="warper m-auto font-poppins rounded-[40px] ">
           <form onSubmit={SubForForm}>

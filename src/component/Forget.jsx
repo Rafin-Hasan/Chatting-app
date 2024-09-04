@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { Bounce, toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const Forget = () => {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigat = useNavigate()
+  const navigate = useNavigate();
 
   const auth = getAuth();
 
@@ -15,16 +16,9 @@ const Forget = () => {
     if (!email) {
       setErrorMessage("Please provide your email");
     } else {
-      // Proceed with form submission (e.g., send email to the server)
       sendPasswordResetEmail(auth, email)
         .then(() => {
-          // Password reset email sent!
-          // ..
-          
-
-
-
-          toast.success('Email already been sent to reset password', {
+          toast.success("Email sent to reset your password", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -34,42 +28,46 @@ const Forget = () => {
             progress: undefined,
             theme: "light",
             transition: Bounce,
-            });
-            navigat('/')
-
+          });
+          navigate("/");
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-          console.log(errorCode)
-
-        });
-      
+        .catch((error) => {});
     }
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-
-    // Clear the error message when the user starts typing
     if (errorMessage) {
       setErrorMessage("");
-    }
-    // if user give us the email
-    else {
-      
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center sm:py-12">
+    <div className="w-[700px] h-[600px] rounded-3xl flex flex-col justify-center sm:py-12 bg-gradient-to-br from-purple-500 to-indigo-500 overflow-hidden">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-lg"></div>
-        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-lg sm:p-20">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.6, -0.05, 0.01, 0.99],
+          }}
+          className="absolute inset-0 bg-gradient-to-r from-pink-300 to-purple-600 shadow-xl transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
+        ></motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.6, -0.05, 0.01, 0.99],
+          }}
+          className="relative px-8 py-10 bg-white shadow-2xl sm:rounded-3xl sm:p-20 backdrop-filter backdrop-blur-lg bg-opacity-70"
+        >
           <div className="max-w-md mx-auto">
-            <h1 className="text-2xl font-semibold">Reset Your Password</h1>
-            <form className="mt-[100px] space-y-6" onSubmit={handleSubmit}>
+            <h1 className="text-3xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+              Reset Your Password
+            </h1>
+            <form className="mt-10 space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
@@ -84,7 +82,8 @@ const Forget = () => {
                     type="email"
                     value={email}
                     onChange={handleEmailChange}
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="appearance-none block w-full px-5 py-3 border border-gray-300 rounded-full shadow-lg placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+                    placeholder="Enter your email"
                   />
                 </div>
                 {errorMessage && (
@@ -94,22 +93,27 @@ const Forget = () => {
                 )}
               </div>
 
-              <div className="w-full h-10"></div>
-
               <div>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-lg text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-300 ease-in-out"
                 >
-                  Get verification email
-                </button>
+                  Send Verification Email
+                </motion.button>
               </div>
-              <div className="w-full h-full flex justify-center">
-                <Link to="/">⬅️ Back to Home</Link>
+              <div className="w-full h-full flex justify-center mt-6">
+                <Link
+                  to="/"
+                  className="text-purple-600 hover:text-purple-800 transition-all duration-300 ease-in-out"
+                >
+                  ⬅️ Back to Home
+                </Link>
               </div>
             </form>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
