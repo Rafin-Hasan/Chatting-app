@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react"; // Lottie for animation
 import LoginAnimation from "../../../public/animetion/Animation.json"; // JSON animation file
-import "./Home.css";
+import "./Login.css";
 import { Bounce, toast } from "react-toastify"; // For toast notifications
 import "react-toastify/dist/ReactToastify.css"; // Toastify CSS
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Firebase Auth methods
@@ -90,6 +90,17 @@ const LoginPageComponent = () => {
               theme: "dark",
               transition: Bounce,
             });
+            // navigate to the prodile page
+            navigate("/ChattingPage");
+            // navigate to the prodile page
+
+            // srt data in rudex
+            dispatch(CurrentUserLoginData(user));
+            // srt data in rudex
+
+            // set data in localstorege
+            localStorage.setItem("userLoginData", JSON.stringify(user));
+            // set data in localstorege
           }
         })
         .catch((error) => {

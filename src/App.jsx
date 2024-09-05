@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import ForgetPassword from "./pages/ForgetPassword";
 import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
+import ChattingPage from "./pages/ChattingPage";
 
 function App() {
   const route = createBrowserRouter(
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/forgetPassword" element={<ForgetPassword />} />
+        <Route path="/ChattingPage" element={<ChattingPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )
