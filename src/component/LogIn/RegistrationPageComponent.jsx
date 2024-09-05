@@ -105,14 +105,14 @@ const RegistrationPageComponent = () => {
           updateProfile(auth.currentUser, {
             displayName: firstName,
             photoURL:
-              "https://play-lh.googleusercontent.com/7oW_TFaC5yllHJK8nhxHLQRCvGDE8jYIAc2SWljYpR6hQlFTkbA6lNvER1ZK-doQnQ=w240-h480-rw",
+              "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
           });
 
           // Send email verification
           sendEmailVerification(auth.currentUser);
 
           // Navigate to login page
-          navigate("/");
+          navigate("/login");
         })
         .catch((error) => {
           setLoader(false); // Hide loader in case of error
