@@ -47,7 +47,7 @@ const NavberComponent = () => {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Link
-              to="/home"
+              to="/"
               className="flex justify-center items-center p-4 hover:bg-purple-700 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
             >
               <FaHome size={20} className="mr-4" />
@@ -75,7 +75,7 @@ const NavberComponent = () => {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Link
-              to="/profile"
+              to="/addfriend"
               className="flex justify-center items-center p-4 hover:bg-purple-700 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
             >
               <IoPersonAddSharp size={20} className="mr-4" />
@@ -113,14 +113,6 @@ const NavberComponent = () => {
             </Link>
           </motion.li>
         </ul>
-      </div>
-
-      {/* Main Content */}
-      <div className={`flex-grow p-6 bg-gray-100 ml-${isOpen ? "64" : "20"}`}>
-        <h2 className="text-3xl font-semibold text-gray-700">
-          Welcome to the Dashboard
-        </h2>
-        {/* Add your main content here */}
       </div>
     </div>
   );
