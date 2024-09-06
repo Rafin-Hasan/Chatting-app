@@ -10,7 +10,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ProfileComponent = () => {
-  const currentUserData = useSelector((state) => state.counter.userData);
+  // Fetching userData from Redux store
+  const userData = useSelector((state) => state.counter.userData);
 
   return (
     <motion.div
@@ -22,21 +23,24 @@ const ProfileComponent = () => {
       <div className="relative">
         <img
           className="w-full h-80 object-cover"
-          src={currentUserData?.photoURL}
+          // Check if userData is available before accessing photoURL
+          src={userData?.photoURL}
           alt="Profile"
         />
-        {/* Overlay circle with job title */}
+        {/* Overlay with name */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
           <h1 className="text-3xl text-white font-bold">
-            {currentUserData?.displayName}
+            {/* Display name from userData */}
+            {userData?.displayName}
           </h1>
         </div>
       </div>
 
       {/* Card Content */}
       <div className="p-8 text-center">
-        {/* Location */}
-        <p className="text-gray-600 mb-3 text-xl">{currentUserData?.email}</p>
+        {/* Email */}
+        <p className="text-gray-600 mb-3 text-xl">{userData?.email}</p>
+
         {/* Social Media Icons */}
         <div className="flex justify-center space-x-8">
           {/* Social Media Links */}

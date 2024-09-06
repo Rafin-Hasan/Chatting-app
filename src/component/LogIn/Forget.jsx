@@ -29,7 +29,7 @@ const Forget = () => {
             theme: "light",
             transition: Bounce,
           });
-          navigate("/");
+          navigate("/login");
         })
         .catch((error) => {});
     }
@@ -105,7 +105,7 @@ const Forget = () => {
               </div>
               <div className="w-full h-full flex justify-center mt-6">
                 <Link
-                  to="/"
+                  to="/login"
                   className="text-purple-600 hover:text-purple-800 transition-all duration-300 ease-in-out"
                 >
                   ⬅️ Back to Home

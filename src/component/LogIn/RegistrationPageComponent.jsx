@@ -267,7 +267,7 @@ const RegistrationPageComponent = () => {
               <p className="text-sm">
                 Already have an account?{" "}
                 <Link
-                  to="/"
+                  to="/login"
                   className="font-bold text-purple-500 hover:text-purple-700 transition-all duration-300"
                 >
                   Login {/* Redirect to Login page */}

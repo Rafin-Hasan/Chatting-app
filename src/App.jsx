@@ -22,6 +22,10 @@ function App() {
   const route = createBrowserRouter(
     createRoutesFromElements(
       <Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="/forgetPassword" element={<ForgetPassword />} />
+        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<LayoutOne />}>
           <Route index element={<HomePage />} />
           <Route path="/Profile" element={<ProfilePage />} />
@@ -29,10 +33,6 @@ function App() {
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/logout" element={<Logout />} />
         </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/registration" element={<RegistrationPage />} />
-        <Route path="/forgetPassword" element={<ForgetPassword />} />
-        <Route path="*" element={<NotFound />} />
       </Route>
     )
   );

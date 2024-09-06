@@ -113,21 +113,8 @@ const LoginPageComponent = () => {
           console.log(errorCode); // Log error code for debugging
 
           // If the error is an incorrect password, show the appropriate error message
-          if (errorCode === "auth/wrong-password") {
+          if (errorCode === "auth/invalid-credential") {
             toast.error("Password is incorrect", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
-          } else {
-            // Show general error message for other errors
-            toast.error(errorMessage, {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,
