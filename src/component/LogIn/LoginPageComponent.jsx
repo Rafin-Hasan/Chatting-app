@@ -9,6 +9,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Firebase
 import { Link, useNavigate } from "react-router-dom"; // For navigation between pages
 import { motion } from "framer-motion"; // Animation library for smooth transitions
 import { useDispatch } from "react-redux"; // Redux for managing global state
+import { getDatabase, ref, set } from "firebase/database";
 
 const LoginPageComponent = () => {
   // useState to manage the email input value and any errors
@@ -30,6 +31,7 @@ const LoginPageComponent = () => {
 
   // Firebase Authentication instance
   const auth = getAuth();
+  const db = getDatabase();
 
   // Function to toggle password visibility (text/password input type)
   const togglePasswordVisibility = () => {
@@ -99,8 +101,14 @@ const LoginPageComponent = () => {
             // Navigate to the chatting page after successful login
             navigate("/");
 
-            // Dispatch the current user data to Redux store
-            dispatch({ type: "SET_CURRENT_USER", payload: user });
+            /// ================ dispatch part
+            dispatch(userData(user));
+            // ================ database part
+            set(ref(db, "Allusers/" + user.uid), {
+              userName: user.displayName,
+              userPhoto: user.photoURL,
+              uid: user.uid,
+            });
 
             // Store user data in localStorage for persistence
             localStorage.setItem("userLoginData", JSON.stringify(user));

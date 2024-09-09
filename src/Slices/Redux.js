@@ -5,7 +5,9 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState: {
     // Initial state tries to load userData from localStorage or sets it to null if not present
-    userData: JSON.parse(localStorage.getItem("userData")) || null,
+    userData: JSON.parse(localStorage.getItem("userData"))
+      ? JSON.parse(localStorage.getItem("userData"))
+      : null,
   },
   reducers: {
     // Reducer to set userData in the state

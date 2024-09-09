@@ -25,14 +25,14 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/forgetPassword" element={<ForgetPassword />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<LayoutOne />}>
-          <Route index element={<HomePage />} />
-          <Route path="/Profile" element={<ProfilePage />} />
+          <Route index element={<ProfilePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/addfriend" element={<AddFriendPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/logout" element={<Logout />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     )
   );

@@ -47,7 +47,7 @@ const NavberComponent = () => {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Link
-              to="/"
+              to="/home"
               className="flex justify-center items-center p-4 hover:bg-purple-700 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
             >
               <FaHome size={20} className="mr-4" />
@@ -61,7 +61,7 @@ const NavberComponent = () => {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Link
-              to="/profile"
+              to="/"
               className="flex justify-center items-center p-4 hover:bg-purple-700 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
             >
               <FaUserAlt size={20} className="mr-4" />
